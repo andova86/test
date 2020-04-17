@@ -8,6 +8,7 @@ import CountryDetail from  "../pages/Countries/CountryDetail"
 import CssBaseline from "@material-ui/core/CssBaseline";
 import 'typeface-roboto';
 import Inscription from "../pages/Login/Inscription";
+import Inscription2 from "../pages/Login/Inscription2";
 
 
 const Contain = (props) => {
@@ -21,7 +22,7 @@ const Contain = (props) => {
                   <main>
                         <Switch>
                             <Route path="/" exact component={Home} />
-                              <Route path="/inscription" exact component={Inscription} />
+                              <Route path="/inscription" exact component={Inscription2} />
                             <Route path="/:texto/detalle" exact component={CountryDetail} />
                         </Switch>
                   </main>
