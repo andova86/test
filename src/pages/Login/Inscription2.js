@@ -452,6 +452,7 @@ const Prueba = () => {
                                                 variant="contained"
                                                 color="primary"
                                                 type={'submit'}
+                                                disabled={!dirty || !isValid}
 onClick={handleToggle}
                                                
 
