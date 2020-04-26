@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Field, Form, Formik} from 'formik';
+import {ErrorMessage, Field, Form, Formik} from 'formik';
 import {Button, CssBaseline, LinearProgress} from '@material-ui/core';
 import {RadioGroup, SimpleFileUpload, TextField} from 'formik-material-ui';
 import {makeStyles} from "@material-ui/core/styles";
@@ -19,6 +19,7 @@ import Box from "@material-ui/core/Box";
 import * as Yup from "yup";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import WhiteButton from "../../components/Buttons/WhiteButton";
 /*interface Values {
   email: string;
   password: string;
@@ -32,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
 
     bloque: {
         padding: theme.spacing(3),
-        spacing: 2,
+        margin: 10,
+
 
     },
 
@@ -48,6 +50,9 @@ interface FormValues {
     name: string;
     position: string;
 }
+
+let FILE_SIZE = 120;
+let arrImg = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 
 const InitialValues: FormValues = {
     name: '',
@@ -68,9 +73,34 @@ const MySchema = Yup.object().shape({
      numero: Yup.string()
         .required('Requerido'),
     file: Yup.string()
+
+
+        .test('fileSize', "File Size is too large", value => value.size <= FILE_SIZE) .test('fileType', "Unsupported File Format", value => arrImg.includes(value.type) )
         .required('Requerido'),
-       activity: Yup.string()
-        .required('Debe selecciona una opcion'),
+    activity: Yup.string()
+        .required('Requerido'),
+    nombre: Yup.string()
+        .required('Requerido'),
+    apellido: Yup.string()
+        .required('Requerido'),
+    email: Yup.string()
+         .email('Correo inválido')
+        .required('Requerido'),
+   telefono: Yup.string()
+        .required('Requerido'),
+    pasword: Yup.string()
+        .required('Requerido'),
+   pasword2: Yup.string()
+       .required('Requerido')
+       .when("pasword", {
+    is: val => (val && val.length > 0 ? true : false),
+    then: Yup.string().oneOf(
+      [Yup.ref("pasword")],
+      "Debe introducir la misma contraseña a confirmar."
+    )
+  })
+
+
 
 
 
@@ -91,7 +121,12 @@ const Prueba = () => {
     const handleSubmit = (values: FormValues): void => {
 
 
-        alert(JSON.stringify(values))
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+
+        }, 1000);
+
+
     }
 
     return (
@@ -113,11 +148,11 @@ const Prueba = () => {
 
                                 <Grid item md={10} xs={12} container={"xl"} justify={"center"}>
 
-                                    <Grid item md={8} xs={12} container spacing={1}>
+                                    <Grid item md={8} sm={6} xs={12} container spacing={1}>
                                         <Paper elevation={3} className={classes.bloque}>
                                             <Grid item xs={12} container spacing={2}>
                                                 <Grid item xs={12} container={"xl"} spacing={3} justify={"center"}>
-                                                    <Typography variant={"h5"} color={"primary"}>
+                                                    <Typography variant={"h5"} color={"primary"} style={{paddingBottom: 30}}>
                                                         Creando su Cuenta de Agencia
                                                     </Typography>
 
@@ -407,7 +442,7 @@ const Prueba = () => {
 
                                                 </Grid>
 
-                                                   <Grid item md={3} xs={12}>
+                                                <Grid item md={3} xs={12}>
                                                         <InputLabel htmlFor="iata">IATA</InputLabel>
                                                         <Field component={RadioGroup} name="activity" id="iata" row
                                                                color={"primary"}  size="small">
@@ -440,6 +475,106 @@ const Prueba = () => {
                                                            variant="outlined"
                                                            size="small"
                                                     />
+                                                    <ErrorMessage name="file" />
+
+                                                </Grid>
+
+                                            </Grid>
+                                        </Paper>
+
+                                         <Paper elevation={3} className={classes.bloque} style={{marginTop:5}}>
+                                            <Grid item xs={12} container spacing={2}>
+                                                <Grid item xs={12} container={"xl"} spacing={3} justify={"center"}>
+                                                    <Typography variant={"h5"} color={"primary"} style={{paddingBottom: 30}}>
+                                                        Titular
+                                                    </Typography>
+
+                                                    <Divider variant="middle" color={"primary"}/>
+                                                </Grid>
+
+                                                <Grid item md={6} xs={12}>
+                                                    <Field
+                                                        component={TextField}
+                                                        name="nombre"
+                                                        type="text"
+                                                        label="Nombre(s)"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                        size="small"
+                                                    />
+
+                                                </Grid>
+
+                                                <Grid item md={6} xs={12}>
+                                                    <Field
+                                                        component={TextField}
+                                                        name="apellido"
+                                                        type="text"
+                                                        label="Apellidos"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                        size="small"
+                                                    />
+
+                                                </Grid>
+
+                                                <Grid item md={6} xs={12}>
+                                                    <Field
+                                                        component={TextField}
+                                                        name="email"
+                                                        type="email"
+                                                        label="E-Mail"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                        size="small"
+                                                    />
+
+                                                </Grid>
+
+                                                <Grid item md={6} xs={12}>
+
+                                                  <Field
+                                                        component={TextField}
+                                                        name="telefono"
+                                                        type="text"
+                                                        label="Teléfono"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                        size="small"
+                                                    />
+
+
+
+                                                </Grid>
+
+                                                <Grid item md={6} xs={12}>
+                                                    <Field
+                                                        component={TextField}
+                                                        name="pasword"
+                                                        type="password"
+                                                        label="Contraseña"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                        size="small"
+
+                                                    />
+
+                                                </Grid>
+
+
+
+                                                <Grid item md={6} xs={12}>
+
+                                                     <Field
+                                                        component={TextField}
+                                                        name="pasword2"
+                                                        type="password"
+                                                        label="Repetir Contraseña"
+                                                        variant="outlined"
+                                                        fullWidth
+                                                        size="small"
+
+                                                    />
 
                                                 </Grid>
 
@@ -447,18 +582,20 @@ const Prueba = () => {
                                         </Paper>
 
 
-                                        <Grid item xs={12} container justify={"center"}>
+                                        <Grid item xs={12} container justify={"center"} style={{paddingTop:20}}>
+
+
                                             <Button
-                                                variant="contained"
+                                                variant="outlined"
                                                 color="primary"
                                                 type={'submit'}
                                                 disabled={!dirty || !isValid}
 onClick={handleToggle}
-                                               
+
 
 
                                             >
-                                                Submit
+                                                Enviar Solicitud
                                             </Button>
 
                                            <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
@@ -470,7 +607,7 @@ onClick={handleToggle}
                                     </Grid>
 
 
-                                    <Grid item md={4} xs={12}>
+                                    <Grid item md={4} sm={6}  xs={12}>
                                         <Container>
                                             <WhyWorkList/>
                                         </Container>

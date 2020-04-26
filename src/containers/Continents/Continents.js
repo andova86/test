@@ -23,17 +23,23 @@ const Continents = (props) => {
     const ContinentData = [
 
         {
-            nombre: 'Europa',
+            nombre: 'América del Norte',
             paises: [
-                 {image: "/img/usa.png", texto: 'México', variant: "h5"},
+                 {image: "/img/canada.png", texto: 'CANADA', variant: "h5"},
+                 {image: "/img/usa.png", texto: 'USA', variant: "h5"},
+                 {image: "/img/mexico.png", texto: 'Mexico', variant: "h5"},
 
 
             ]
         },
 
         {
-            nombre: 'America del Norte',
+            nombre: 'Centroamérica y el Caribe',
             paises: [
+                  {image: "/img/costa_rica.png", texto: 'Caribe', variant: "h5"},
+                 {image: "/img/costa_rica.png", texto: 'COSTA RICA', variant: "h5"},
+                 {image: "/img/cuba.png", texto: 'CUBA', variant: "h5"},
+                 {image: "/img/bahamas.png", texto: 'BAHAMAS', variant: "h5"},
 
             ]
         },

@@ -40,6 +40,11 @@ const Continent = (props) => {
         },
     };
 
+     theme.typography.h5 = {
+        fontSize: '10vw',
+
+    };
+
 
     return (
 
@@ -59,7 +64,7 @@ const Continent = (props) => {
 
                         {
                             paises.map(item => (
-                                <Grid item md={3} xs={12} sm={6}>
+                                <Grid item md={3} xs={6} sm={6}>
 
                                     <Link to={`/${item.texto}/detalle`}>
                                         <ImageTittle image={item.image} texto={item.texto} variant={item.variant} back={'rgba(0,0,0,0.4)' } opacity={'.5'} />
