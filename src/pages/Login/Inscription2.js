@@ -452,7 +452,7 @@ const Prueba = () => {
                                                 variant="contained"
                                                 color="primary"
                                                 type={'submit'}
-
+onClick={handleToggle}
                                                
 
 
