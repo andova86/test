@@ -51,9 +51,6 @@ interface FormValues {
     position: string;
 }
 
-let FILE_SIZE = 120;
-let arrImg = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
-
 const InitialValues: FormValues = {
     name: '',
     position: '',
@@ -75,7 +72,6 @@ const MySchema = Yup.object().shape({
     file: Yup.string()
 
 
-        .test('fileSize', "File Size is too large", value => value.size <= FILE_SIZE) .test('fileType', "Unsupported File Format", value => arrImg.includes(value.type) )
         .required('Requerido'),
     activity: Yup.string()
         .required('Requerido'),
