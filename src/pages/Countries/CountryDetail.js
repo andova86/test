@@ -14,12 +14,13 @@ import Container from "@material-ui/core/Container";
 
 import {Link} from "react-router-dom";
 import {ChevronRight} from "@material-ui/icons";
+import Button from "@material-ui/core/Button";
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        marginTop: theme.spacing(5),
+          paddingTop:'64px',
     },
 
     texto: {
@@ -77,7 +78,11 @@ const Base = (props) => {
                     <Grid item xs={12} md={10} justify={"center"} container style={{padding: '20px'}}>
 
                         <Link to={"/inscription"} style={{textDecoration: 'none'}}>
-                            <BlueButton name={"Registrarse"} icon={<ChevronRight/>}/>
+
+                             <Button color={'primary'} variant={"contained"}  endIcon={<ChevronRight/>}>Registrarse</Button>
+
+
+
                         </Link>
                     </Grid>
 

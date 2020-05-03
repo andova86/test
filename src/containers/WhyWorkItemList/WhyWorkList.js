@@ -57,7 +57,7 @@ const WhyWorkList = (props) => {
 
                 {
                     values.map(item => (
-                        <WhyWorkItem texto={item.text} variant="h4" icono={item.icon}/>
+                        <WhyWorkItem texto={item.text} variant="h4" icono={item.icon} id={item.id}/>
                     ))
 
                 }

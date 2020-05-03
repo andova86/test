@@ -28,7 +28,7 @@ import WhiteButton from "../../components/Buttons/WhiteButton";
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        paddingTop: "88px",
+        paddingTop: "64px",
     },
 
     bloque: {
@@ -114,7 +114,9 @@ const Prueba = () => {
     setOpen(!open);
   };
 
+
     const handleSubmit = (values: FormValues): void => {
+
 
 
         setTimeout(() => {
@@ -470,6 +472,7 @@ const Prueba = () => {
                                                            fullWidth
                                                            variant="outlined"
                                                            size="small"
+
                                                     />
                                                     <ErrorMessage name="file" />
 

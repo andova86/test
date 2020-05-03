@@ -21,7 +21,7 @@ const ImageTittle = (props) => {
         width: '100%',
          '&:hover ': {
                 opacity: props.opacity ,
-                borderRadius: '10px',
+
 
             },
 

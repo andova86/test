@@ -17,17 +17,21 @@ const Contain = (props) => {
 
     return (
           <BrowserRouter>
-               <CssBaseline/>
+
+                   <CssBaseline/>
                 <Header/>
                   <main>
                         <Switch>
-                            <Route path="/" exact component={Home} />
+                              <Route path="/" exact component={Home} />
                               <Route path="/inscription" exact component={Inscription2} />
-                            <Route path="/:texto/detalle" exact component={CountryDetail} />
+                              <Route path="/:texto/detalle" exact component={CountryDetail} />
                         </Switch>
                   </main>
 
                  <Footer/>
+
+
+
 
 
             </BrowserRouter>

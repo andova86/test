@@ -38,7 +38,7 @@ const WhyWorkItem = (props) => {
         <div className={classes.root}>
                <CssBaseline />
             <main>
-               <ul className={classes.lista}>
+               <ul className={classes.lista} key={props.id}>
                    <li className={classes.lista_item}>{props.icono}</li>
                    <li>
                        <Typography variant={"caption"}>

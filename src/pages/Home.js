@@ -9,6 +9,8 @@ import BannerPrincipal from "../components/Banner/BannerPrincipal";
 
 import BannerW from "../components/Banner/BannerW";
 import Continents from "../containers/Continents/Continents";
+import Button from "@material-ui/core/Button";
+
 
 
 const Home = (props) => {
@@ -17,7 +19,13 @@ const Home = (props) => {
     const useStyles = makeStyles((theme) => ({
         root: {
             flexGrow: 1,
-            paddingTop: 56,
+            paddingTop:'64px',
+
+
+        },
+
+        offset: {
+            offset: theme.mixins.toolbar,
         },
         control: {
             padding: theme.spacing(2),
@@ -30,20 +38,23 @@ const Home = (props) => {
 
     return (
 
+
         <React.Fragment>
 
 
             <div className={classes.root}>
+
                 <CssBaseline/>
                 <Grid container justify={"center"}>
                     <Grid item xs={12} md={10}>
 
                         <BannerPrincipal/>
 
+
                     </Grid>
 
                     <Grid item xs={12} md={10} container justify={"flex-start"}>
-                         <Typography variant={"body1"} className={classes.control}>
+                        <Typography variant={"body1"} className={classes.control}>
                             “Enjoy Travel Holding” (ETH) es una marca que pertenece al Grupo Skedio. Con más de 20 años
                             de experiencia en el turismo internacional, sólida representación mundial y con una
                             tecnología avanzada, nos especializamos en los servicios B2B (Business to Business) con los
@@ -76,6 +87,7 @@ const Home = (props) => {
             </div>
 
         </React.Fragment>
+
 
     )
 }

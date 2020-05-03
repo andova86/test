@@ -19,6 +19,10 @@ import {makeStyles, useTheme} from '@material-ui/core/styles';
 import logo from '../images/logo.png'
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import PhoneInTalkIcon from '@material-ui/icons/PhoneInTalk';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import { borders } from '@material-ui/system';
 
 
 
@@ -29,6 +33,15 @@ import 'typeface-roboto';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import blue from "@material-ui/core/colors/blue";
 import {Link} from "react-router-dom";
+import Dialog from "@material-ui/core/Dialog";
+import ContactPanel from "../components/Modal/Contactos/ContactPanel";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import PhoneInTalkOutlinedIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
+import Paper from "@material-ui/core/Paper";
+import ContactPanelItem from "../components/Modal/Contactos/ContactPanelItem";
+import Container from "@material-ui/core/Container";
 
 
 const drawerWidth = 240;
@@ -36,6 +49,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
+        paddingTop: theme.mixins.toolbar.height,
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {
@@ -68,6 +82,34 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
         padding: theme.spacing(3),
     },
+    offset: {
+        offset: theme.mixins.toolbar,
+    },
+
+    linea: {
+        background: "#0064ae",
+        color: "white !important" ,
+        padding: 5,
+
+    },
+    subtitle: {
+        color: "gray",
+        paddingTop: 5,
+    },
+
+    ref: {
+        color:"white",
+         textDecoration: "none",
+
+
+    },
+
+    borderRight: {
+        borderRight: "1px !important ",
+        borderColor: "white !important",
+
+    },
+
 
     texto: {
         color: 'blue',
@@ -83,6 +125,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function ResponsiveDrawer(props) {
+
+    const [open, setOpen] = React.useState(false);
     const {container} = props;
     const classes = useStyles();
     const theme = useTheme();
@@ -97,6 +141,14 @@ function ResponsiveDrawer(props) {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+    const handleClickModal = (event) => {
+        setOpen(true);
+    };
+    const handleCloseModal = (value) => {
+        setOpen(false);
+
+    };
+
 
     const handleClose = () => {
         setAnchorEl(null);
@@ -128,7 +180,7 @@ function ResponsiveDrawer(props) {
     );
     const preventDefault = (event) => event.preventDefault();
     return (
-        <div className={classes.root}>
+        <React.Fragment>
 
 
             <CssBaseline/>
@@ -139,17 +191,15 @@ function ResponsiveDrawer(props) {
                         <Toolbar>
 
                             <Link to={"/"}>
-                              <img src={logo} alt={"logo"}/>
+                                <img src={logo} alt={"logo"}/>
                             </Link>
                             <div className={classes.root}/>
 
                             <Hidden smDown implementation="css">
 
-                                <Button aria-haspopup="true" onClick={handleClick} className={classes.capital}>
+                                <Button aria-haspopup="true" onClick={handleClickModal} className={classes.capital}>
                                     Envíanos un Mensaje
                                 </Button>
-
-
 
 
                             </Hidden>
@@ -171,6 +221,8 @@ function ResponsiveDrawer(props) {
 
 
             </AppBar>
+            <div className={classes.offset}/>
+
             <nav className={classes.drawer} aria-label="mailbox folders">
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Hidden smUp implementation="css">
@@ -202,8 +254,123 @@ function ResponsiveDrawer(props) {
                     </Drawer>
                 </Hidden>
             </nav>
+            {/*
+          <Dialog onClose={handleCloseModal} aria-labelledby="simple-dialog-title" open={open} maxWidth={"xl"}>
+               <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
 
-        </div>
+              <DialogContent >
+
+            <Grid container justify={"center"} style={{background:"primary"}} >
+                    <Grid item xs={2}>
+                        <Typography variant={"h6"} color={"secondary"}>
+                            Por Teléfono
+                        </Typography>
+
+                    </Grid>
+                    <Grid item xs={4}>
+                       <IconButton color={"primary"} />
+                    </Grid>
+
+                    <Grid item xs={6}>
+                        <a href={"https://api.whatsapp.com/send?phone=34608682668"}>+34 608 682 668</a>
+                    </Grid>
+                </Grid>
+
+        </DialogContent>
+
+
+
+
+          </Dialog>*/}
+
+            <Dialog onClose={handleCloseModal} aria-labelledby="customized-dialog-title" open={open} maxWidth={"xs"} fullWidth >
+                <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+
+
+                      <Typography gutterBottom variant={'h5'} color={"primary"}>
+                         Enjoy Travel Holding
+                    </Typography>
+
+                </DialogTitle>
+                <DialogContent dividers >
+
+
+
+                        <Typography gutterBottom variant={'h5'} className={classes.subtitle}>
+                        Por Teléfono
+                    </Typography>
+
+                    <Grid container className={classes.linea} >
+
+                        <Grid item xs={2} borderRight={1}>
+                            <PhoneInTalkIcon fontSize={"default"} color={"white"}/>
+                        </Grid>
+
+                        <Grid item xs={10}>
+
+
+
+                            <Typography gutterBottom variant={"subtitle1"} color={"initial"}>
+                       <a href={"tel:+34 935 830 936"} className={classes.ref}> +34 935 830 936</a>
+                    </Typography>
+
+                        </Grid>
+
+                    </Grid>
+
+
+
+                       <Typography gutterBottom variant={'h5'} className={classes.subtitle}>
+                        Por Whatsapp
+                    </Typography>
+
+                     <Grid container className={classes.linea}>
+
+                        <Grid item xs={2} borderRight={1}>
+                            <WhatsAppIcon fontSize={"default"} color={"white"}/>
+                        </Grid>
+
+                        <Grid item xs={10}>
+
+                            <Typography gutterBottom variant={"subtitle1"} color={"initial"}>
+                       <a href={"https://api.whatsapp.com/send?phone=34608682668"} className={classes.ref}> +34 608 682 668</a>
+                    </Typography>
+
+                        </Grid>
+
+                    </Grid>
+
+                     <Typography gutterBottom variant={'h5'} className={classes.subtitle}>
+                        Por E-mail
+                    </Typography>
+
+                     <Grid container className={classes.linea}>
+
+                        <Grid item xs={2} borderRight={1}>
+                            <MailOutlineIcon fontSize={"default"} color={"white"}/>
+                        </Grid>
+
+                        <Grid item xs={10}>
+
+                            <Typography gutterBottom variant={"subtitle1"} color={"initial"}>
+                       <a href={"mailto:info@enjoytravelholding.com"} className={classes.ref}> info@enjoytravelholding.com</a>
+                    </Typography>
+
+                        </Grid>
+
+                    </Grid>
+
+
+
+
+
+                </DialogContent>
+                <DialogActions>
+
+                </DialogActions>
+            </Dialog>
+
+        </React.Fragment>
     );
 }
 
