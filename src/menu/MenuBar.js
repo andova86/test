@@ -195,14 +195,15 @@ function ResponsiveDrawer(props) {
                             </Link>
                             <div className={classes.root}/>
 
-                            <Hidden smDown implementation="css">
+
 
                                 <Button aria-haspopup="true" onClick={handleClickModal} className={classes.capital}>
                                     Envíanos un Mensaje
                                 </Button>
 
 
-                            </Hidden>
+
+{/*
 
                             <IconButton
                                 color="inherit"
@@ -213,6 +214,7 @@ function ResponsiveDrawer(props) {
                             >
                                 <MenuIcon/>
                             </IconButton>
+*/}
 
 
                         </Toolbar>
@@ -223,8 +225,8 @@ function ResponsiveDrawer(props) {
             </AppBar>
             <div className={classes.offset}/>
 
-            <nav className={classes.drawer} aria-label="mailbox folders">
-                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+           {/* <nav className={classes.drawer} aria-label="mailbox folders">
+                 The implementation can be swapped with js to avoid SEO duplication of links.
                 <Hidden smUp implementation="css">
                     <Drawer
                         container={container}
@@ -253,7 +255,7 @@ function ResponsiveDrawer(props) {
                         {drawer}
                     </Drawer>
                 </Hidden>
-            </nav>
+            </nav>*/}
             {/*
           <Dialog onClose={handleCloseModal} aria-labelledby="simple-dialog-title" open={open} maxWidth={"xl"}>
                <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
