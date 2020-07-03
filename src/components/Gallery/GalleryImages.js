@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import {CssBaseline} from "@material-ui/core";
 
@@ -8,6 +8,7 @@ import Gallery from 'react-grid-gallery';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+
         marginTop: theme.spacing(1),
     },
 
@@ -16,49 +17,44 @@ const useStyles = makeStyles((theme) => ({
 
 const GalleryImages = (props) => {
     const classes = useStyles();
-    const IMAGES =
-[{
-        src: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
-        thumbnail: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_n.jpg",
-        thumbnailWidth: 320,
-        thumbnailHeight: 174,
+    const [imagenes, setImagenes] = useState(props.imagenes)
+    //const url = "https://enjoytravelholding.com/media/"
+    const url = "http://127.0.0.1:8000/media/"
 
-        caption: "After Rain (Jeshu John - designerspics.com)"
-},
-{
-        src: "https://c2.staticflickr.com/9/8356/28897120681_3b2c0f43e0_b.jpg",
-        thumbnail: "https://c2.staticflickr.com/9/8356/28897120681_3b2c0f43e0_n.jpg",
-        thumbnailWidth: 320,
-        thumbnailHeight: 212,
-        tags: [{value: "Ocean", title: "Ocean"}, {value: "People", title: "People"}],
-        caption: "Boats (Jeshu John - designerspics.com)"
-},
+    var list = [];
 
-{
-        src: "https://c4.staticflickr.com/9/8887/28897124891_98c4fdd82b_b.jpg",
-        thumbnail: "https://c4.staticflickr.com/9/8887/28897124891_98c4fdd82b_n.jpg",
-        thumbnailWidth: 320,
-        thumbnailHeight: 212
-}]
+    for (var i = 0; i < imagenes.length; i++) {
+
+        var image = {
+            src: url +  imagenes[i].image,
+            thumbnail: url +  imagenes[i].image,
+            thumbnailWidth: 320,
+            thumbnailHeight: 212,
+             caption: imagenes[i].description
+        };
+
+
+        list.push(image);
+    }
+
+    console.log(list)
 
     return (
-
-
         <div className={classes.root}>
-            <CssBaseline/>
-            <main>
+                <Gallery images={list}
+                         enableImageSelection={false}
 
+                         showLightboxThumbnails={true}
 
-              <Gallery images={IMAGES}
-              enableImageSelection={false}
-
-                       showLightboxThumbnails={true}
-              />
-
-            </main>
-
+                />
 
         </div>
+
+
+
+
+
+
 
     );
 }

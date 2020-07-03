@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography";
 import {CssBaseline} from "@material-ui/core";
@@ -40,7 +39,7 @@ const Continent = (props) => {
         },
     };
 
-     theme.typography.h5 = {
+    theme.typography.h5 = {
         fontSize: '10vw',
 
     };
@@ -54,9 +53,14 @@ const Continent = (props) => {
                 <CssBaseline/>
                 <main>
 
-                    <Grid container justify={"flex-start"} spacing={2}>
-                        <Grid item xs={12}>
-                            <Typography variant={props.variant} color="textSecondary" className={[classes.titulo]}>
+                    <Grid container
+                          justify={"flex-start"}
+                          spacing={2}>
+                        <Grid item
+                              xs={12}>
+                            <Typography variant={props.variant}
+                                        color="textSecondary"
+                                        className={[classes.titulo]}>
                                 {props.titulo}
                             </Typography>
                         </Grid>
@@ -64,11 +68,25 @@ const Continent = (props) => {
 
                         {
                             paises.map(item => (
-                                <Grid item md={3} xs={6} sm={6}>
+                                <Grid item
+                                      md={3}
+                                      xs={6}
+                                      sm={6}>
 
-                                    <Link to={`/${item.texto}/detalle`}>
-                                        <ImageTittle image={item.image} texto={item.texto} variant={item.variant} back={'rgba(0,0,0,0.4)' } opacity={'.5'} />
+
+
+                                    <Link to={{
+                                        pathname: `/${item.slug}/detalle`,
+                                        state: {item}
+                                    }}>
+                                         <ImageTittle image={item.main_image}
+                                                     texto={item.name}
+                                                     variant={item.variant}
+                                                     back={'rgba(0,0,0,0.4)'}
+                                                     opacity={'.5'}
+                                                     key={item.id}/>
                                     </Link>
+
                                 </Grid>
                             ))
                         }

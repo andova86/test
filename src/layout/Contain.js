@@ -1,40 +1,40 @@
 import React from 'react'
 
-import {Route, Switch,  BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Footer from "./Footer";
 import Header from './Header'
 import Home from "../pages/Home";
-import CountryDetail from  "../pages/Countries/CountryDetail"
+import CountryDetail from "../pages/Countries/CountryDetail"
 import CssBaseline from "@material-ui/core/CssBaseline";
 import 'typeface-roboto';
-import Inscription from "../pages/Login/Inscription";
 import Inscription2 from "../pages/Login/Inscription2";
 
 
 const Contain = (props) => {
 
 
-
     return (
-          <BrowserRouter>
+        <BrowserRouter>
 
-                   <CssBaseline/>
-                <Header/>
-                  <main>
-                        <Switch>
-                              <Route path="/" exact component={Home} />
-                              <Route path="/inscription" exact component={Inscription2} />
-                              <Route path="/:texto/detalle" exact component={CountryDetail} />
-                        </Switch>
-                  </main>
+            <CssBaseline/>
+            <Header/>
+            <main>
+                <Switch>
+                    <Route path="/"
+                           exact
+                           component={Home}/>
+                    <Route path="/inscription"
+                           exact
+                           component={Inscription2}/>
+                    <Route path="/:texto/detalle"
+                           exact
+                           component={CountryDetail}/>
+                </Switch>
+            </main>
 
-                 <Footer/>
+            <Footer/>
 
-
-
-
-
-            </BrowserRouter>
+        </BrowserRouter>
 
     )
 }
