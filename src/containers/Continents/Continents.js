@@ -27,8 +27,8 @@ const Continents = (props) => {
 
 
     var myHeaders = new Headers();
-    //myHeaders.append("Authorization", "Token 3efc646241ba43129f5b2bd5d5b6d05f631b3cb0");
-     myHeaders.append("Authorization", "Token b6bb35a2aac8e8da5fc5e55a6964a9f23d89d7e5");
+    myHeaders.append("Authorization", "Token 3efc646241ba43129f5b2bd5d5b6d05f631b3cb0");
+     //myHeaders.append("Authorization", "Token b6bb35a2aac8e8da5fc5e55a6964a9f23d89d7e5");
 
     var requestOptions = {
         method: 'GET',
