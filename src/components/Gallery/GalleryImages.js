@@ -18,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
 const GalleryImages = (props) => {
     const classes = useStyles();
     const [imagenes, setImagenes] = useState(props.imagenes)
-    //const url = "https://enjoytravelholding.com/media/"
-    const url = "http://127.0.0.1:8000/media/"
+    const url = "https://enjoytravelholding.com/media/"
+    //const url = "http://127.0.0.1:8000/media/"
 
     var list = [];
 

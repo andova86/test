@@ -37,8 +37,8 @@ const Continents = (props) => {
     };
 
     const ObtenerDatos = async () => {
-        const data = await fetch("http://127.0.0.1:8000/api/continents/", requestOptions)
-        //const data = await fetch("https://enjoytravelholding.com/api/continents/", requestOptions)
+        //const data = await fetch("http://127.0.0.1:8000/api/continents/", requestOptions)
+        const data = await fetch("https://enjoytravelholding.com/api/continents/", requestOptions)
         const conts = await data.json()
         setContinentes(conts)
 
